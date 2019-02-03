@@ -34,6 +34,7 @@ public class LikoServerHandler extends ChannelInboundHandlerAdapter {
 //                //ctx.close();
 //            }
 //        });
+        System.out.println("who called me ?");
     }
 
     @Override
@@ -70,7 +71,9 @@ public class LikoServerHandler extends ChannelInboundHandlerAdapter {
         responseMsg.setGender("male");
         responseMsg.setAge(35);
         responseMsg.setMarried(true);
-        ctx.writeAndFlush(responseMsg);
+        //ctx.writeAndFlush(responseMsg);
+        //如果处理时间很长，需要提交给业务线程池处理，处理完毕后再交给event loop
+        // （类似于netty自身处理task的方式，弄一个task，交给event loop处理 ！！！！！！！！！！！！！！！！！！！！！！！
     }
 
     @Override
